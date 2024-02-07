@@ -1,0 +1,32 @@
+.all-tasks{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.all-tasks .container{
+    width: 100%;
+    height: 500px;
+    background-color: #4B4453;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    overflow-y: scroll ;
+    div{
+        width: 100%;
+        height: 16rem;
+        background-color: var(--task-card-background-color);
+        margin: 0 10px 15px 0;
+        padding: 1.2rem 1rem;
+        border-radius: 15px;
+
+    }
+}

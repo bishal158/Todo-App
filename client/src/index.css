@@ -1,15 +1,54 @@
-:root {
-  --app-background-color: #fff;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100;1,200;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Poppins:ital,wght@0,100;1,100;1,300&family=Roboto:wght@100;400&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 *{
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+:root{
+  --app-background-color: #1F183D;
+  --app-text-color: #ffffff;
+  --app-icon-color: #1F183D;
+  --app-logo-color: #ee436a;
+  --app-input-field-color: #2D2D35;
+  --app-box-shadow: -16px 3px 78px -22px rgb(238, 67, 106);
+  --app-font-family: "Roboto Light",Popins,sans-serif;
+  --app-font-size-lg: 1.2rem;
+  --app-font-size-sm: 1rem;
+  --task-form-background-color: #212022;
+  --task-form-border-color: #333233;
+  --task-card-background-color: #333233;
+  /*progress bar*/
 
-
+}
 body {
+  font-family: "Roboto Light",Popins,sans-serif;
   background-color: var(--app-background-color);
-  height: 100vh;
+  color: var(--app-text-color);
+}
+
+html{
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  transition: all 0.4s ease-in-out;
+}
+
+a{
+  text-decoration: none;
+  color: var(--app-text-color);
+}
+
+::-webkit-scrollbar {
+  height: 0.8rem;
+  width: 0.3rem;
+
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(16, 15, 15);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(234, 234, 234, 0.5);
+  border-radius: 0.5rem;
+
 }

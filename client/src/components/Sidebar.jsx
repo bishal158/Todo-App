@@ -1,4 +1,4 @@
-import React from "react";
+import './styles/Sidebar.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 function Sidebar({children}) {

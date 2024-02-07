@@ -1,0 +1,60 @@
+.header {
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 10px 0 10px;
+    border-radius: 15px;
+    @media screen and (max-width: 600px) {
+        position: fixed;
+        width: 100%;
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+        transform: translateX(-50%);
+        background-color: #4B4453;
+        flex-direction: row;
+    }
+    .nav-link{
+        width: 50px;
+        height: 50px;
+        padding: 1rem;
+        margin: 0.7rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: var(--app-text-color);
+        color: var(--app-icon-color);
+        @media screen and  (max-width: 600px){
+            margin: 0.8rem .4rem;
+        }
+    }
+
+}
+
+
+
+.nav-link svg{
+    font-size: 1.2rem;
+    color: var(--app-icon-color);
+}
+.header .active{
+    background-color: var(--app-logo-color);
+    transition: all 0.5s linear;
+    box-shadow: var(--app-box-shadow);
+    svg{
+        color: var(--app-text-color);
+    }
+}
+
+
+
