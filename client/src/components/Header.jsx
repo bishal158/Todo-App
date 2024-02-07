@@ -5,22 +5,12 @@ const routes = [
   {
     name: "Home",
     path: "",
-    icon: "fa-solid fa-home"
+    icon: "fa-solid fa-home",
   },
   {
     name: "All Your Tasks",
     path: "/all-tasks",
     icon: "fa-solid fa-list",
-  },
-  {
-    name: "Incomplete Tasks",
-    path: "/incomplete-tasks",
-    icon: "fa-solid fa-calendar-xmark",
-  },
-  {
-    name: "Completed Tasks",
-    path: "/completed-tasks",
-    icon: "fa-solid fa-list-check",
   },
 ];
 export const Header = () => {

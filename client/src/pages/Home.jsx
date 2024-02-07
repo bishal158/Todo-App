@@ -53,6 +53,7 @@ function Home() {
                 id={"task_title"}
                 name={"task_title"}
                 onChange={handleChange}
+                maxLength={40}
               />
             </div>
           </div>
@@ -68,8 +69,8 @@ function Home() {
                 className="form-control"
                 id={"task_description"}
                 rows="8"
-                maxLength={280}
-                minLength={250}
+                maxLength={250}
+                minLength={200}
                 name={"task_description"}
                 onChange={handleChange}
               ></textarea>
