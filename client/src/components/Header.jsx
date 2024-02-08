@@ -5,7 +5,7 @@ const routes = [
   {
     name: "Home",
     path: "",
-    icon: "fa-solid fa-home",
+    icon: "fa-solid fa-plus",
   },
   {
     name: "All Your Tasks",

@@ -4,72 +4,164 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
-    margin-bottom: 80px;
+    padding: 10px;
     flex-direction: column;
-}
-
-.modal-header {
-    background-color: #1F183D;
-}
-
-.update_form{
-    background-color: var(--task-form-background-color);
-    border: 1px solid var(--task-form-border-color);
-    padding: 20px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
-    border-radius: 10px;
-    label,legend{
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
+    @media screen and (max-height: 768px){
+        margin-top: 40px;
+        margin-bottom: 120px;
     }
-    input[type="text"]{
-        background-color: rgba(247, 245, 245, 0.1);
-        border: none;
-        padding: 12px;
-        color: #fff;
-    }
-    textarea{
-        background-color: rgba(247, 245, 245, 0.1);
-        border: none;
-        padding: 12px;
-        color: #fff;
-    }
-    .button{
+    .counters{
         width: 100%;
-        height: 100%;
+        height: 150px;
         display: flex;
-        justify-content: flex-end;
-        .add_task_button{
-            width: 110px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        p{
+            width: 300px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px;
-            background-color: rgba(8, 8, 8, 0.6);
-            color: var(--app-text-color);
+            background-color: rgba(212, 212, 224, 0.1);
+            font-weight: bold;
+        }
+    }
+    .filters{
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        button{
+            width:70px;
+            height: 40px;
+            margin-right: 10px;
+            text-align: center;
             border-radius: 5px;
             border: none;
-            box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
-            &:hover{
-                transition: all 0.5s ease-in-out;
-                transform: scale(1.01);
-                box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+            background-color: #0e033b;
+            color: #fff;
+            font-weight: bold;
+            &:active{
+                background-color: #ffffff;
+                color: #1F183D;
             }
         }
     }
-
+}
+.modal-header {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F183D;
+    border-bottom: 1px solid #373333;
+    .title{
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .close{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        cursor: pointer;
+        svg{
+            color: red;
+            font-weight: bold;
+        }
+        &:hover{
+            transition: all 0.4s ease-in-out;
+            transform: scale(1.02);
+            box-shadow: rgba(255, 255, 255, 0.1) 0 1px 1px 0 inset, rgba(50, 50, 93, 0.25) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
+        }
+    }
+}
+.modal-body{
+    background-color: #1F183D;
+    form{
+        label,legend{
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        input[type="text"]{
+            background-color: rgba(247, 245, 245, 0.1);
+            border: none;
+            padding: 12px;
+            color: #fff;
+        }
+        textarea{
+            background-color: rgba(247, 245, 245, 0.1);
+            border: none;
+            padding: 12px;
+            color: #fff;
+        }
+        input[type="radio"]:checked{
+            background-color: #ee436a;
+        }
+        .button{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            .add_task_button{
+                width: 140px;
+                padding: 10px;
+                background-color: rgba(8, 8, 8, 0.6);
+                color: var(--app-text-color);
+                border-radius: 5px;
+                border: none;
+                box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+                &:hover{
+                    transition: all 0.5s ease-in-out;
+                    transform: scale(1.01);
+                    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+                }
+            }
+        }
+    }
+}
+.modal-footer{
+    background-color: #1F183D;
+    border-top: 1px solid #373333;
+    button{
+        width: 100px;
+        padding: 8px;
+        background-color: white;
+        cursor: pointer;
+        color: red;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+        &:hover{
+            transition: all 0.5s ease-in-out;
+            transform: scale(1.01);
+            box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+        }
+    }
 }
 .all-tasks .container{
     width: 100%;
-    height: 800px;
-    background-color: inherit;
+    height: 600px;
+    background-color: #4B4453;
     border-radius: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px;
     flex-wrap: wrap;
     overflow-y: scroll ;
-    div{
+    .task{
         width: 90%;
         height: 22rem;
         background-color: var(--task-card-background-color);
@@ -90,6 +182,11 @@
             text-align: justify;
             font-size: 1.2rem;
             padding:0.4rem;
+            span{
+                color: forestgreen;
+                font-weight: bold;
+                margin-right: 0.2rem;
+            }
             @media screen and (max-width: 768px) {
                 font-size: 0.9rem;
             }
@@ -97,7 +194,6 @@
         h4{
             width: 100%;
             height: 10.2rem;
-            display: flex;
             text-align: justify;
             text-transform: capitalize;
             padding:0.4rem;
@@ -106,7 +202,11 @@
             align-items: flex-start;
             flex-wrap: wrap;
             border-radius: 0.5rem;
-            background-color: rgb(86, 111, 178);
+            span{
+                color: forestgreen;
+                font-weight: bold;
+                margin-right: 0.2rem;
+            }
             @media screen and (max-width: 768px) {
                 font-size: small;
             }

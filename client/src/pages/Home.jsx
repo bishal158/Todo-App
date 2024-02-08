@@ -1,6 +1,8 @@
 import "./styles/Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import image from "../assets/Add tasks.gif";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 const getLocalStorage = () => {
   let tasks = localStorage.getItem("task");
   if (tasks) {
@@ -20,10 +22,18 @@ function Home() {
 
   const addtask = (e) => {
     e.preventDefault();
-    if (!inputs) {
-    } else {
-      setItems([...items, inputs]);
-    }
+    setItems([...items, inputs]);
+    toast.success("Task Added", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
 
   const handleChange = (e) => {
@@ -36,10 +46,9 @@ function Home() {
     localStorage.setItem("task", JSON.stringify(items));
   }, [items]);
   return (
-    <div className={"add_task_container"}>
-      <div className={"container"}>
-        <h1 className={"text-start p-1 text-white"}>Add Your Daily Task</h1>
-      </div>
+    <div className={"container-fluid mb-lg-5 add_task_container"}>
+      <img src={image} alt={"..."} />
+      <p className={"text"}>Add Your Task</p>
       <div className={"container task_form"}>
         <form onSubmit={addtask}>
           <div className="row mb-3">
@@ -68,9 +77,9 @@ function Home() {
               <textarea
                 className="form-control"
                 id={"task_description"}
-                rows="8"
+                rows="3"
                 maxLength={250}
-                minLength={200}
+                minLength={40}
                 name={"task_description"}
                 onChange={handleChange}
               ></textarea>
@@ -130,6 +139,7 @@ function Home() {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }
