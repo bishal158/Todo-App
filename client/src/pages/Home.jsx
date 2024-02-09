@@ -16,7 +16,7 @@ function Home() {
   const [inputs, setInputs] = useState({
     task_title: "",
     task_description: "",
-    priority_level: "",
+    priority_level: "low",
     completed: false,
   });
 
@@ -79,7 +79,6 @@ function Home() {
                 id={"task_description"}
                 rows="3"
                 maxLength={250}
-                minLength={40}
                 name={"task_description"}
                 onChange={handleChange}
               ></textarea>

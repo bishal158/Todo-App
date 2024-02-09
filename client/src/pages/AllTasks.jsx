@@ -37,9 +37,9 @@ function AllTasks() {
 
   // Collect updated inputs
   const [updateinputs, setUpdateinputs] = useState({
-    task_title: "",
-    task_description: "",
-    priority_level: "",
+    task_title: previousData.task_title,
+    task_description: previousData.task_description,
+    priority_level: previousData.priority_level,
     completed: false,
   });
 
@@ -175,7 +175,6 @@ function AllTasks() {
                   id={"task_description"}
                   rows="8"
                   maxLength={250}
-                  minLength={200}
                   name={"task_description"}
                   onChange={handleChange}
                   defaultValue={previousData.task_description}
@@ -195,7 +194,7 @@ function AllTasks() {
                     id={"high"}
                     onChange={handleChange}
                     value={"high"}
-                    checked={previousData.priority_level === "high"}
+                    defaultValue={previousData.priority_level}
                   />
                   <label className="form-check-label" htmlFor={"high"}>
                     High
@@ -209,7 +208,7 @@ function AllTasks() {
                     id={"medium"}
                     onChange={handleChange}
                     value={"medium"}
-                    checked={previousData.priority_level === "medium"}
+                    defaultValue={previousData.priority_level}
                   />
                   <label className="form-check-label" htmlFor={"medium"}>
                     Medium
@@ -223,7 +222,7 @@ function AllTasks() {
                     id={"low"}
                     value={"low"}
                     onChange={handleChange}
-                    checked={previousData.priority_level === "low"}
+                    defaultValue={previousData.priority_level}
                   />
                   <label className="form-check-label" htmlFor={"low"}>
                     Low
