@@ -4,21 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
 import { NavLink } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 // get tasks from localStorage
-const getLocalStorage = () => {
-  let tasks = localStorage.getItem("task");
-  if (tasks) {
-    return JSON.parse(localStorage.getItem("task"));
-  } else {
-    return [];
-  }
-};
+
 function AllTasks() {
   // react hooks
-  const [items, setItems] = useState(getLocalStorage());
+  const todos = useSelector((state) => state.todoReducer);
+  const [items, setItems] = useState(todos);
   // filter terms
   const [filterTerm, setFilterTerm] = useState("");
-  console.log(filterTerm);
   // show popup  updateForm
   const [modalShow, setModalShow] = useState(false);
   useEffect(() => {
@@ -59,6 +53,7 @@ function AllTasks() {
   };
   const updateTaskValues = (e) => {
     e.preventDefault();
+
     // set item with previous task and updated task
     setItems((pre) => {
       const newTask = [...pre];
@@ -245,6 +240,7 @@ function AllTasks() {
           <button onClick={() => setModalShow(false)}>Cancel</button>
         </Modal.Footer>
       </Modal>
+
       <div className={"container"}>
         {items
           .filter((item) => {

@@ -1,28 +1,21 @@
 import "./styles/Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import image from "../assets/Add tasks.gif";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-const getLocalStorage = () => {
-  let tasks = localStorage.getItem("task");
-  if (tasks) {
-    return JSON.parse(localStorage.getItem("task"));
-  } else {
-    return [];
-  }
-};
+import { useDispatch, useSelector } from "react-redux";
+import { addTask } from "../actions/todoAction.js";
 function Home() {
-  const [items, setItems] = useState(getLocalStorage());
+  const dispatch = useDispatch();
   const [inputs, setInputs] = useState({
     task_title: "",
     task_description: "",
     priority_level: "low",
     completed: false,
   });
-
   const addtask = (e) => {
     e.preventDefault();
-    setItems([...items, inputs]);
+    dispatch(addTask(inputs));
     toast.success("Task Added", {
       position: "top-right",
       autoClose: 3000,
@@ -35,16 +28,12 @@ function Home() {
       transition: Bounce,
     });
   };
-
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-  useEffect(() => {
-    localStorage.setItem("task", JSON.stringify(items));
-  }, [items]);
   return (
     <div className={"container-fluid mb-lg-5 add_task_container"}>
       <img src={image} alt={"..."} />
