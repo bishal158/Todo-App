@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import image from "../assets/Add tasks.gif";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { addTask } from "../actions/todoAction.js";
+import { AddTask } from "../actions/todoAction.js";
 function Home() {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({
@@ -15,7 +15,7 @@ function Home() {
   });
   const addtask = (e) => {
     e.preventDefault();
-    dispatch(addTask(inputs));
+    dispatch(AddTask(inputs));
     toast.success("Task Added", {
       position: "top-right",
       autoClose: 3000,
