@@ -6,7 +6,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Header } from "./components/Header.jsx";
-import { Task_Context_Provider } from "./context/Task_Context.jsx";
 library.add(fab, fas);
 function App() {
   return (

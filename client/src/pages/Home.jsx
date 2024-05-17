@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import image from "../assets/Add tasks.gif";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import { AddTask } from "../actions/todoAction.js";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/todoSlice.js";
 function Home() {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({
@@ -15,7 +15,7 @@ function Home() {
   });
   const addtask = (e) => {
     e.preventDefault();
-    dispatch(AddTask(inputs));
+    dispatch(addTask(inputs));
     toast.success("Task Added", {
       position: "top-right",
       autoClose: 3000,

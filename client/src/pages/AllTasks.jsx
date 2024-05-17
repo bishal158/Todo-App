@@ -5,12 +5,14 @@ import Modal from "react-bootstrap/Modal";
 import { NavLink } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { DeleteTask, ToggleStatus, UpdateTask } from "../actions/todoAction.js";
+import { deleteTask, updateTask, toggleTask } from "../redux/todoSlice.js";
 // get tasks from localStorage
 
 function AllTasks() {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todoReducer);
+  const { todos, isLoading, error } = useSelector((state) => state.todo);
+  const [allTodos, setAllTodos] = useState([]);
+
   // filter terms
   const [filterTerm, setFilterTerm] = useState("");
   // show popup  updateForm
@@ -36,15 +38,14 @@ function AllTasks() {
     }));
   };
   // Crud Operation Functions
-  const updateTask = (id) => {
+  const updateATask = (id) => {
     setModalShow(true);
     setPreviousDataIndex(id);
   };
   const updateTaskValues = (e) => {
     e.preventDefault();
-    const updateTask = { previousDataIndex, updateinputs };
-    console.log(updateTask);
-    dispatch(UpdateTask(updateTask));
+    const updateTaskInfo = { previousDataIndex, updateinputs };
+    dispatch(updateTask(updateTaskInfo));
     // set item with previous task and updated task
     toast.info("Task Updated", {
       position: "top-right",
@@ -58,9 +59,9 @@ function AllTasks() {
       transition: Bounce,
     });
   };
-  const deleteTask = (id) => {
+  const deleteATask = (id) => {
     // delete a task using splice()
-    dispatch(DeleteTask(id));
+    dispatch(deleteTask(id));
     toast.error("Task Deleted", {
       position: "top-right",
       autoClose: 3000,
@@ -76,9 +77,11 @@ function AllTasks() {
   const statusToggle = (index, status) => {
     // update only status of a specific task
     const info = { index, status };
-    dispatch(ToggleStatus(info));
+    dispatch(toggleTask(info));
   };
-
+  useEffect(() => {
+    setAllTodos(todos);
+  }, [dispatch, todos]);
   return (
     <>
       <div className={"all-tasks"}>
@@ -107,7 +110,7 @@ function AllTasks() {
           <button onClick={() => setFilterTerm("")}>All</button>
         </div>
         <div className={"container"}>
-          {todos
+          {allTodos
             .filter((item) => {
               if (!filterTerm) {
                 return item;
@@ -155,12 +158,12 @@ function AllTasks() {
                     <span>
                       <FontAwesomeIcon
                         icon="fa-solid fa-pen-to-square"
-                        onClick={() => updateTask(index, task)}
+                        onClick={() => updateATask(index, task)}
                       />
                     </span>
                     <span
                       onClick={() => {
-                        deleteTask(index);
+                        deleteATask(index);
                       }}
                     >
                       <FontAwesomeIcon
